@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 @include('backend.layouts.head')
 
 <body id="page-top">
