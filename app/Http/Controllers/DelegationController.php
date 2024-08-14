@@ -50,6 +50,7 @@ class DelegationController extends Controller
         ]);
 
         $data=$request->all();
+        // dd($data);
         $type=$request->input('type');
         $data['rat_id'] = $request->input('ratification');
         if($type){
@@ -96,7 +97,7 @@ class DelegationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $delegation = Delegation::findOrFail($id);
         $this->validate($request, [
@@ -105,7 +106,7 @@ class DelegationController extends Controller
             'type'=>'array|required',
             'number'=>"required|numeric",
             'status'=>'required|in:active,inactive',
-            'work_yeaer'=>'required||date_format:Y',
+            'work_year'=>'required||date_format:Y',
             'work_content'=>'nullable|string',
         ]);
 
@@ -115,7 +116,7 @@ class DelegationController extends Controller
         $delegation->type = implode(',', $request->type);
         $delegation->status = $request->status;
         $delegation->work_content = $request->work_content;
-
+        // dd($delegation);
         $status=$delegation->save();
 
         $work_results = $request->work_results;

@@ -77,7 +77,7 @@
         <div class="form-group col-2">
             <label for="inputYear" class="col-form-label">Work Year</label>
             <input id="inputYear" type="text" name="work_year" placeholder="Enter year" value="{{ old('year', date('Y')) }}" class="form-control year-picker">
-            @error('year')
+            @error('work_year')
             <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
@@ -161,12 +161,12 @@
 
         if (yearlyResults) {
           let monthlySums = yearlyResults.months.map((month, index) => {
-            return `<td><input type="number" name="work_results[${member.id}][months][${index}]" value="${month}" class="form-control month-input text-center"></td>`;
+            return `<td class="month-td"><input type="number" name="work_results[${member.id}][months][${index}]" value="${month}" class="form-control month-input text-center"></td>`;
           });
 
           let row = $(`
             <tr>
-              <td>${member.name}</td>
+              <td class="text-primary">${member.name}</td>
               ${monthlySums.join('')}
               <td class="text-danger">${yearlyResults.months.reduce((acc, curr) => acc + Number(curr), 0)}</td>
             </tr>
@@ -193,7 +193,7 @@
       $('#total-sum').text(`Total sum: ${totalSum}`);
     }
 
-    $('#inputSYear').on('change', function() {
+    $('#inputYear').on('change', function() {
       const year = $(this).val();
       updateTable(year);
     });

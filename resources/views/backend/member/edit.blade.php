@@ -146,7 +146,7 @@
                         value = yearResult.months[month - 1] || '0';
                     }
 
-                    let monthInput = $('<input>').attr('type', 'text').addClass('form-control month-input text-center').data('year', year).data('month', month).val(value);
+                    let monthInput = $('<input>').attr('type', 'number').addClass('form-control month-input text-center').data('year', year).data('month', month).val(value);
                     row.append($('<td></td>').addClass('month-td').append(monthInput));
                 }
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Delegation extends Model
 {
-    protected $fillable = ['name','number','rat_id','type','status'];
+    protected $fillable = ['name','number','rat_id','type','status','work_content'];
 
     public function rat_info() {
         return $this->hasOne('App\Models\Ratification','id','rat_id');
