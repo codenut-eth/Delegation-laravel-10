@@ -1,5 +1,6 @@
 @extends('backend.layouts.master')
 @section('title','DELE || Delegation Create')
+
 @section('main-content')
 
 <div class="card">
@@ -18,7 +19,7 @@
         {{-- {{$ratifications}} --}}
 
         <div class="form-group">
-          <label for="ratification">Ratification <span class="text-danger">*</span></label>
+          <label for="ratification" class="col-form-label">Ratification <span class="text-danger">*</span></label>
           <select name="ratification" id="ratification" class="form-control">
               <option value="">--Select any ratification--</option>
               @foreach($ratifications as $key=>$rat_data)
@@ -31,7 +32,7 @@
         </div>
 
         <div class="form-group">
-          <label for="number">Number <span class="text-danger">*</span></label>
+          <label for="number" class="col-form-label">Number <span class="text-danger">*</span></label>
           <input id="number" type="number" name="number" min="0" placeholder="Enter Number"  value="{{old('number')}}" class="form-control">
           @error('number')
           <span class="text-danger">{{$message}}</span>
@@ -39,12 +40,12 @@
         </div>
 
         <div class="form-group">
-          <label for="type">Type <span class="text-danger">*</span></label>
+          <label for="type" class="col-form-label">Type <span class="text-danger">*</span></label>
           <select name="type[]" class="form-control selectpicker"  multiple data-live-search="true">
               <option value="">--Select any type--</option>
-              <option value="IT">Information Technology (IT)</option>
-              <option value="M">Medicine (M)</option>
-              <option value="C">Construction (C)</option>
+              @foreach ($types as $index => $type )
+                <option value="{{ $type->id }}">{{ $type->name }}</option>
+              @endforeach
           </select>
           @error('type')
           <span class="text-danger">{{$message}}</span>
@@ -61,6 +62,15 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
+
+        <div class="form-group">
+          <label for="work_content" class="col-form-label">Work content</label>
+          <textarea class="form-control" id="work_content" name="work_content"></textarea>
+          @error('work_content')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+
         <div class="form-group mb-3">
           <button type="reset" class="btn btn-warning">Reset</button>
            <button class="btn btn-success" type="submit">Submit</button>
@@ -73,11 +83,22 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{asset('backend/summernote/summernote.min.css')}}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<link rel="stylesheet" href="{{asset('backend/css/bootstrap-select.css')}}" /> 
 @endpush
 @push('scripts')
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script src="{{asset('backend/summernote/summernote.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src="{{asset('backend/js/bootstrap-select.min.js')}}"></script>
+
+<script>
+  $(document).ready(function () {
+
+    $('#work_content').summernote({
+      placeholder: "Write work content.....",
+        tabsize: 2,
+        height: 150
+    });
+  })
+</script>
 
 @endpush

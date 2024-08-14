@@ -31,7 +31,30 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $this->validate($request, [
+            'name'=>'string|required',
+            'dele_id'=>'required|exists:delegations,id',
+            'start_date'=>'date|required',
+            'end_date'=>'date|required',
+            'status'=>'required|in:active,inactive',
+            'photo'=>'nullable|string',
+            'work_results'=>'string|nullable',
+        ]);
+
+        $data=$request->all();
+        // dd($data['work_results']);
+        // Encode the work_results array as JSON
+        $data['work_results'] = $request->input('work_results');
+
+        $status=Member::create($data);
+        if($status){
+            request()->session()->flash('success','Member Successfully added');
+        }
+        else{
+            request()->session()->flash('error','Please try again!!');
+        }
+        return redirect()->route('member.index');
     }
 
     /**
@@ -45,9 +68,12 @@ class MemberController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $delegations = Delegation::getAllDelegation();
+        $member = Member::findOrFail($id);
+        $workResults = json_encode($member->work_results);
+        return view('backend.member.edit')->with('member', $member)->with('delegations', $delegations)->with('workResults', $workResults);
     }
 
     /**
@@ -55,7 +81,29 @@ class MemberController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name'=>'string|required',
+            'dele_id'=>'required|exists:delegations,id',
+            'start_date'=>'date|required',
+            'end_date'=>'date|required',
+            'status'=>'required|in:active,inactive',
+            'photo'=>'nullable|string',
+            'work_results'=>'string|nullable',
+        ]);
+    
+        $member = Member::findOrFail($id);
+        $data = $request->all();
+        $data['work_results'] = $request->input('work_results');
+    
+        $member->fill($data);
+        $status = $member->save();
+    
+        if ($status) {
+            request()->session()->flash('success', 'Member Successfully updated');
+        } else {
+            request()->session()->flash('error', 'Please try again!!');
+        }
+        return redirect()->route('member.index');
     }
 
     /**

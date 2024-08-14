@@ -12,8 +12,11 @@ class Delegation extends Model
         return $this->hasOne('App\Models\Ratification','id','rat_id');
     }
 
+
     public static function getAllDelegation () {
-        return Delegation::orderBy('number', 'asc')->paginate(10);
+        $delegations =  Delegation::orderBy('number', 'asc')->paginate(10);
+        return $delegations;
     }
+
 
 }

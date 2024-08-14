@@ -78,7 +78,7 @@
     </li>
 
     {{-- Delegation Types --}}
-    <!-- <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#typeCollapse" aria-expanded="true" aria-controls="typeCollapse">
           <i class="fas fa-table"></i>
           <span>Delegation Types</span>
@@ -90,12 +90,12 @@
             <a class="collapse-item" href="{{route('type.create')}}">Add Delegation</a>
           </div>
         </div>
-    </li> -->
+    </li>
 
     <!-- Members -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#memberCollapse" aria-expanded="true" aria-controls="memberCollapse">
-        <i class="fas fa-fw fa-folder"></i>
+        <i class="fas fa-users"></i>
         <span>Members</span>
       </a>
       <div id="memberCollapse" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -124,7 +124,7 @@
      <!-- Users -->
      <li class="nav-item">
         <a class="nav-link" href="{{route('users.index')}}">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-user"></i>
             <span>Users</span></a>
     </li>
      <!-- General settings -->

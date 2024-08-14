@@ -34,12 +34,12 @@ class DelegationTypeController extends Controller
             'status'=>'required|in:active,inactive',
         ]);
         $data= $request->all();
-        $short = $this->getFirstLetter($request->name);
-        $count=DelegationType::where('short',$short)->count();
-        if($count>0){
-            $short=$short.'-'.date('ymdis').'-'.rand(0,999);
-        }
-        $data['short']=$short;
+        // $short = $this->getFirstLetter($request->name);
+        // $count=DelegationType::where('short',$short)->count();
+        // if($count>0){
+        //     $short=$short.'-'.date('ymdis').'-'.rand(0,999);
+        // }
+        // $data['short']=$short;
         // return $data;   
         $status=DelegationType::create($data);
         if($status){

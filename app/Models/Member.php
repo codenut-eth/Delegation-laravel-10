@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
 {
-    protected $fillables = ['name','dele_id','start_date','end_date','photo'];
+    protected $fillable = ['name','dele_id','start_date','end_date','photo','status','work_results'];
 
     public function dele_info() {
-        return $this->hasOne('delegations','id','dele_id');
+        return $this->hasOne('App\Models\Delegation','id','dele_id');
     }
 
     public static function getAllMember() {
-        return self::orderBy('id','desc')->paginate(10);
+        return Member::orderBy('id','desc')->paginate(10);
     }
 }

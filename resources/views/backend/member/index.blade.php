@@ -40,9 +40,9 @@
               </tr>
           </tfoot>
           <tbody>
-            @foreach($members as $member)   
+            @foreach($members as $index => $member)   
                 <tr>
-                    <td>{{$member->id}}</td>
+                    <td>{{$index + 1}}</td>
                     <td>
                         @if($member->photo)
                             <img src="{{$member->photo}}" class="img-fluid rounded-circle" style="max-width:50px" alt="{{$member->photo}}">
@@ -51,11 +51,9 @@
                         @endif
                     </td>
                     <td>{{$member->name}}</td>
-                    <td>{{$member->dele_info['name']}}</td>
-                    <!-- <td>{{(($member->created_at)? $member->created_at->diffForHumans() : '')}}</td> -->
+                    <td>{{$member->dele_info['number']}}({{$member->dele_info['name']}})</td>
                     <td>{{$member->start_date}}</td>
                     <td>{{$member->end_date}}</td>
-                    <td>{{$member->role}}</td>
                     <td>
                         @if($member->status=='active')
                             <span class="badge badge-success">{{$member->status}}</span>
@@ -64,8 +62,8 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('users.edit',$member->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                    <form method="POST" action="{{route('users.destroy',[$member->id])}}">
+                        <a href="{{route('member.edit',$member->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                    <form method="POST" action="{{route('member.destroy',[$member->id])}}">
                       @csrf 
                       @method('delete')
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$member->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>

@@ -20,7 +20,6 @@
             <tr>
               <th>No</th>
               <th>Name</th>
-              <th>Short</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -29,7 +28,6 @@
             <tr>
               <th>No</th>
               <th>Name</th>
-              <th>Short</th>
               <th>Status</th>
               <th>Action</th>
               </tr>
@@ -39,7 +37,6 @@
                 <tr>
                     <td>{{$index + 1}}</td>
                     <td>{{$type->name}}</td>
-                    <td>{{$type->short}}</td>
                     <td>
                         @if($type->status=='active')
                             <span class="badge badge-success">{{$type->status}}</span>
