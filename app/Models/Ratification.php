@@ -12,4 +12,12 @@ class Ratification extends Model
     public static function getAllRatification() {
         return Ratification::orderBy('date', 'desc')->paginate(10);
     }
+
+    public static function countActiveRatification() {
+        $data = Ratification::where('status', 'active')->count();
+        if($data) {
+            return $data;
+        }
+        return 0;
+    }
 }

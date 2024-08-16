@@ -15,4 +15,13 @@ class Member extends Model
     public static function getAllMember() {
         return Member::orderBy('id','desc')->paginate(10);
     }
+
+    public static function countActiveMember() {
+        $data = Member::where('status', 'active')->count();
+        if($data) {
+            return $data;
+        }
+        return 0;
+    }
+
 }

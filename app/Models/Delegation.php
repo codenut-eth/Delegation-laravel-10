@@ -18,5 +18,12 @@ class Delegation extends Model
         return $delegations;
     }
 
+    public static function countActiveDelegation () {
+        $data = Delegation::where('status', 'active')->count();
+        if($data) {
+            return $data;
+        }
+        return 0;
+    }
 
 }
