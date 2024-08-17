@@ -143,7 +143,7 @@
           chartData = [{
             label: 'Sum of All Years',
             data: sumData,
-            borderColor: 'rgb(255, 138, 0)',
+            borderColor: '#1cc88a',
             fill: true,
             tension: 0.3,
           }];
@@ -151,7 +151,7 @@
           chartData = [{
             label: year,
             data: workResults[year] || [],
-            borderColor: 'rgb(255, 138, 0)',
+            borderColor: '#1cc88a',
             fill: true,
             tension: 0.3,
           }];
