@@ -15,6 +15,7 @@
     use App\Http\Controllers\PayPalController;
     use App\Http\Controllers\NotificationController;
     use App\Http\Controllers\HomeController;
+    use App\Http\Controllers\RatificationController;
     use \UniSharp\LaravelFilemanager\Lfm;
 
     /*
@@ -89,6 +90,9 @@
     Route::get('/product-grids', [FrontendController::class, 'productGrids'])->name('product-grids');
     Route::get('/product-lists', [FrontendController::class, 'productLists'])->name('product-lists');
     Route::match(['get', 'post'], '/filter', [FrontendController::class, 'productFilter'])->name('shop.filter');
+// Ratification
+    Route::get('/ratification', [FrontendController::class, 'ratificationLists'])->name('ratification-lists');
+    Route::get('/delegation', [FrontendController::class, 'delegationLists'])->name('delegation-lists');
 // Order Track
     Route::get('/product/track', [OrderController::class, 'orderTrack'])->name('order.track');
     Route::post('product/track/order', [OrderController::class, 'productTrackOrder'])->name('product.track.order');

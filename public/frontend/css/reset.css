@@ -234,6 +234,18 @@ big {
 	padding: 100px 0;
 	position: relative;
 }
+.footer-section {
+	padding: 20px 0;
+	position: relative;
+}
+.history-section {
+	padding: 40px 0;
+	position: relative;
+	overflow-y: auto;
+}
+.history-content {
+	height: 200px;
+}
 .section-title {
 	text-align: center;
 	margin-bottom: 50px;

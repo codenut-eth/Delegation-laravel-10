@@ -103,4 +103,6 @@ class RatificationController extends Controller
         }
         return redirect()->route('ratification.index');
     }
+
+    
 }

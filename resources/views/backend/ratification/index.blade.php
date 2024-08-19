@@ -42,7 +42,7 @@
                 <tr>
                     <td>{{$index + 1}}</td>
                     <td>{{$ratification->date}}</td>
-                    <td>{{$ratification->content}}</td>
+                    <td>{!! html_entity_decode($ratification->content) !!}</td>
                     <td>
                         @if($ratification->status=='active')
                             <span class="badge badge-success">{{$ratification->status}}</span>

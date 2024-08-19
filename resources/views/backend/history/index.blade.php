@@ -12,7 +12,7 @@
         
         <div class="form-group">
           <label for="description" class="col-form-label">Content <span class="text-danger">*</span></label>
-          <textarea class="form-control" id="description" name="content">{{$history->content}}</textarea>
+          <textarea class="form-control" id="description" name="content">{!! html_entity_decode($history->content)!!}</textarea>
           @error('description')
           <span class="text-danger">{{$message}}</span>
           @enderror

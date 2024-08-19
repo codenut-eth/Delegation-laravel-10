@@ -67,22 +67,6 @@
       </div>
     </div>
 
-    <!--Posts-->
-    <!-- <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-warning shadow h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Post</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{\App\Models\Post::countActivePost()}}</div>
-              </div>
-              <div class="col-auto">
-                <i class="fas fa-folder fa-2x text-gray-300"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
   </div>
   <div class="row">
 
@@ -114,9 +98,7 @@
   @endsection
 
   @push('scripts')
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- <script type="text/javascript" src={{asset('backend/js/charts-loader.js')}}></script> -->
+  <script src="{{asset('backend/js/chart.js')}}"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

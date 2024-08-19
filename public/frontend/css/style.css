@@ -1994,6 +1994,12 @@ Version:1.0
 .single-product .product-content{
 	margin-top:20px;
 }
+.delegation-list {
+	margin-top: 20px;
+}
+.rat-title {
+	font-weight: bold;
+}
 .single-product .product-img:hover.default-overlay::before {
   background-color: rgba(38, 38, 38, 0.2);
   z-index: 9;
@@ -3704,12 +3710,32 @@ Version:1.0
 	background: #fff;
 }
 .shop-services.home{
-	padding:60px 0;
+	padding:40px 0;
 	background:#F6F7FB;
 }
 .shop-services .single-service {
 	position: relative;
 	padding-left: 65px;
+}
+.work-count {
+	position: relative;
+	padding-left: 65px;
+	color: #CB2027;
+}
+.ratification-count {
+	position: relative;
+	padding-left: 65px;
+	color: #4267B2;
+}
+.delegation-count {
+	position: relative;
+	padding-left: 65px;
+	color: #95D03A;
+}
+.member-count {
+	position: relative;
+	padding-left: 65px;
+	color: #448AFF;
 }
 .shop-services .single-service i {
 	height: 50px;

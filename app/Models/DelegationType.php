@@ -11,4 +11,10 @@ class DelegationType extends Model
     public static function getAllType() {
         return DelegationType::orderBy('id', 'desc')->paginate(10);
     }
+
+    public static function getTypeName($types) {
+        $typeIds = array_filter(explode(',', $types));
+        $typeNames = DelegationType::whereIn('id', $typeIds)->pluck('name');
+        return $typeNames->implode(', ');
+    }
 }
