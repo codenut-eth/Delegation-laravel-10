@@ -93,6 +93,7 @@
 // Ratification
     Route::get('/ratification', [FrontendController::class, 'ratificationLists'])->name('ratification-lists');
     Route::get('/delegation', [FrontendController::class, 'delegationLists'])->name('delegation-lists');
+    Route::get('delegation-detail/{id}', [FrontendController::class, 'delegationDetail'])->name('delegation-detail');
 // Order Track
     Route::get('/product/track', [OrderController::class, 'orderTrack'])->name('order.track');
     Route::post('product/track/order', [OrderController::class, 'productTrackOrder'])->name('product.track.order');

@@ -1405,6 +1405,9 @@ Version:1.0
 .hero-area3 .big-content .button .btn{
 	color:#fff;
 }
+#total-amount {
+	margin-bottom: 12px;
+}
 
 .hero-area3 .small-content{
 	height:240px;

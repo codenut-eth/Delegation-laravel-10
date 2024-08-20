@@ -3,13 +3,26 @@
 @section('title','E-SHOP || PRODUCT PAGE')
 
 @section('main-content')
-
-<form  method="POST">
+<div class="breadcrumbs">
+ <div class="container">
+  <div class="row">
+   <div class="col-12">
+    <div class="bread-inner">
+     <ul class="bread-list">
+      <li><a href="{{route('home')}}">Home<i class="ti-arrow-right"></i></a></li>
+      <li class="active"><a href="blog-single.html">Ratification list</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<form method="POST">
  @csrf
  <section class="product-area shop-sidebar shop section">
   <div class="container">
    <div class="row">
-    
+
     <div class="col-lg-12 col-md-12 col-12">
      <div class="row">
       <div class="col-12">
@@ -39,10 +52,10 @@
          <h3><a href="{{route('product-detail',$ratification->id)}}">{!!html_entity_decode($ratification->content)!!}</a></h3>
          <div class="delegation-list">
           @if(strlen($ratification->delegation) !== 0)
-           @php $delegations = explode(",",$ratification->delegation); @endphp
-           @foreach ($delegations as $delegation)
-            <p>{{$delegation}}</p>
-           @endforeach
+          @php $delegations = explode(",",$ratification->delegation); @endphp
+          @foreach ($delegations as $delegation)
+          <p>{{$delegation}}</p>
+          @endforeach
           @endif
          </div>
         </div>
@@ -60,6 +73,3 @@
 </form>
 
 @endsection
-@push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-@endpush

@@ -14,6 +14,7 @@ use App\Models\History;
 use App\Models\Member;
 use App\Models\Ratification;
 use App\Models\Delegation;
+use App\Models\DelegationType;
 use App\User;
 use Auth;
 use Session;
@@ -483,5 +484,16 @@ class FrontendController extends Controller
     public function delegationLists() {
         $delegations = Delegation::orderBy('created_at','desc')->get();
         return view('frontend.pages.delegation-lists')->with('delegations', $delegations);
+    }
+
+    public function delegationDetail ($id) {
+        $delegation = Delegation::where('id', $id)->first();
+        $types = DelegationType::getTypeName($delegation->type);
+        $members = Member::where('dele_id', $delegation->id)->get();
+
+        return view('frontend.pages.delegation_detail')
+            ->with('delegation', $delegation)
+            ->with('types', $types)
+            ->with('members', $members);
     }
 }
